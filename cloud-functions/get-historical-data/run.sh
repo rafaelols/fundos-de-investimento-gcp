@@ -1,0 +1,1 @@
+gcloud functions call get-historical-data --data '{"doesnt": "matter"}'
