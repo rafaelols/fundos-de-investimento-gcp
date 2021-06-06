@@ -32,7 +32,7 @@ def main(request):
     bucket = storage_client.get_bucket(BUCKET_NAME)
     
     for year in range(2005, 2017):
-        filename = 'csv/historical_data/'+str(year)+'.csv'
+        filename = 'historical_data/csv/'+str(year)+'.csv'
         zip_file = get_file_from_each_year(year)
         upload_file = extract_file(zip_file)
         upload_blob(bucket, upload_file, filename)
