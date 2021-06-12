@@ -63,7 +63,7 @@ def upload_updated_files(updated_files, bucket):
         with requests.Session() as s:
             downloaded_file = s.get(url)
             decoded_content = downloaded_file.content.decode('utf-8')
-            filename = 'data/csv/' + file[0]
+            filename = 'raw/data/csv/' + file[0]
             blob = bucket.blob(filename)
             blob.upload_from_string(decoded_content, content_type='csv')
 
