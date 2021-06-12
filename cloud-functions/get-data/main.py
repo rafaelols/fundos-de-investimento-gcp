@@ -31,7 +31,7 @@ def get_file_info():
 def check_if_last_update_info_exists(storage_client, bucket):
     """If file containing last update info not exists, create it with 2017-01-01
     """
-    filename = 'raw/last_update.txt'
+    filename = 'raw/data/csv/last_update.txt'
     stats = storage.Blob(bucket=bucket, name=filename).exists(storage_client)
     if not stats:
         blob = bucket.blob(filename)
@@ -39,7 +39,7 @@ def check_if_last_update_info_exists(storage_client, bucket):
 
 
 def get_last_update(bucket):
-    filename = 'raw/last_update.txt'
+    filename = 'raw/data/csv/last_update.txt'
     blob = bucket.get_blob(filename)
     last_update = blob.download_as_text()
     dict_last_update = {'last_update': last_update}
@@ -69,7 +69,7 @@ def upload_updated_files(updated_files, bucket):
 
 
 def update_last_update(bucket):
-    filename = 'last_update.txt'
+    filename = 'raw/data/csv/last_update.txt'
     blob = bucket.blob(filename)
     blob.upload_from_string(datetime.today().strftime('%Y-%m-%d'), content_type='txt')
 
